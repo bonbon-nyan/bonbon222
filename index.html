@@ -508,6 +508,103 @@ footer {
   max-width: 460px; text-align: right; line-height: 1.75;
 }
 
+
+/* ============ FOXTAIL ACCENT ============ */
+.foxtail {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.foxtail svg { width: 100%; height: auto; display: block; }
+
+/* hero corner accents */
+.foxtail-hero-l { left: 2%;  bottom: -6px; width: clamp(70px, 9vw, 130px); opacity: 0.55; transform: rotate(-6deg); }
+.foxtail-hero-r { right: 3%; bottom: -6px; width: clamp(60px, 8vw, 115px); opacity: 0.45; transform: scaleX(-1) rotate(-9deg); }
+
+/* empathy section */
+.empathy { position: relative; overflow: hidden; }
+.foxtail-emp-l { left: -14px; bottom: -20px; width: clamp(72px, 10vw, 130px); opacity: 0.4; transform: rotate(-12deg); }
+.foxtail-emp-r { right: -14px; top: -30px; width: clamp(64px, 9vw, 115px); opacity: 0.3; transform: scaleX(-1) rotate(-18deg); }
+
+/* story section */
+.story { position: relative; overflow: hidden; }
+.foxtail-story { right: -10px; bottom: -24px; width: clamp(78px, 11vw, 150px); opacity: 0.38; transform: scaleX(-1) rotate(-8deg); }
+
+/* cta */
+.foxtail-cta-l { left: -6px; bottom: -26px; width: clamp(74px, 10vw, 140px); opacity: 0.32; transform: rotate(-10deg); filter: brightness(0) invert(1); }
+.foxtail-cta-r { right: -6px; top: -34px; width: clamp(66px, 9vw, 125px); opacity: 0.26; transform: scaleX(-1) rotate(-16deg); filter: brightness(0) invert(1); }
+
+/* footer */
+footer { position: relative; overflow: hidden; }
+.foxtail-footer { right: 2%; bottom: -22px; width: clamp(60px, 8vw, 110px); opacity: 0.28; transform: scaleX(-1); }
+
+/* small inline sprig next to section eyebrow */
+.sprig { width: 16px; height: 26px; display: inline-block; vertical-align: -6px; }
+.sprig svg { width: 100%; height: 100%; }
+
+/* divider foxtails flanking the paw */
+.paw-divider .divider-sprig { width: 22px; height: 34px; opacity: 0.55; }
+.paw-divider .divider-sprig svg { width: 100%; height: 100%; }
+.paw-divider .divider-sprig.flip { transform: scaleX(-1); }
+
+/* ============ PRODUCT PHOTO ============ */
+.product-photo {
+  width: calc(100% + 52px);
+  margin: -30px -26px 20px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--cream-warm);
+}
+.product-photo-placeholder {
+  width: calc(100% + 52px);
+  margin: -30px -26px 20px;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background:
+    linear-gradient(135deg, var(--sage-pale) 0%, var(--cream-warm) 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+}
+.product-photo-placeholder .ph-paw { width: 34px; opacity: 0.42; }
+.product-photo-placeholder .ph-text {
+  font-size: 0.7rem; color: var(--ink-light); letter-spacing: 0.08em;
+}
+.product-card { padding-top: 30px; }
+
+@media (max-width: 720px) {
+  .foxtail-hero-r, .foxtail-emp-r, .foxtail-cta-r { display: none; }
+  .foxtail-hero-l { width: 62px; opacity: 0.4; }
+}
+
+
+/* ============ IMAGE NOTE ============ */
+.product-photo-wrap {
+  position: relative;
+  width: calc(100% + 52px);
+  margin: -30px -26px 20px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  overflow: hidden;
+}
+.product-photo-wrap .product-photo {
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.img-note {
+  position: absolute;
+  right: 10px; bottom: 10px;
+  background: rgba(61,59,54,0.62);
+  color: #fff;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
 /* ============ ANIM ============ */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -563,10 +660,12 @@ footer {
 </header>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
+<section class="hero" style="position:relative;overflow:hidden;">
   <div class="hero-image-wrap">
     <img src="hero-cats.png" alt="テーブルの向こうから飼い主の帰りを待つ3匹の猫" class="hero-image">
   </div>
+  <div class="foxtail foxtail-hero-l"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
+  <div class="foxtail foxtail-hero-r"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
   <div class="hero-content">
     <span class="hero-badge">
       <img src="logo-paw.png" alt="">
@@ -589,6 +688,8 @@ footer {
 
 <!-- ============ EMPATHY ============ -->
 <section class="empathy">
+  <div class="foxtail foxtail-emp-l"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
+  <div class="foxtail foxtail-emp-r"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
   <div class="empathy-inner reveal">
     <p class="empathy-quote">
       残業で遅くなる夜、<br>
@@ -623,6 +724,10 @@ footer {
 
     <!-- 01 -->
     <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="petkit-room.png" alt="ナチュラルなリビングに置かれたPETKIT Pura Max2と猫" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
       <div class="product-icon-wrap">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="17" r="10" stroke="#6E8266" stroke-width="1.8"/>
@@ -646,6 +751,10 @@ footer {
 
     <!-- 02 -->
     <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="feeder-room.png" alt="ナチュラルなリビングでカリカリマシーンV2C+から食事をする猫" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
       <div class="product-icon-wrap">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="6" y="11" width="20" height="14" rx="3" stroke="#6E8266" stroke-width="1.8"/>
@@ -655,20 +764,24 @@ footer {
         </svg>
       </div>
       <span class="product-tag sage">カメラ付き</span>
-      <h3 class="product-name">カリカリマシーン V2C</h3>
-      <p class="product-sub">カメラ付き自動給餌器・日本メーカー</p>
+      <h3 class="product-name">カリカリマシーン V2C+</h3>
+      <p class="product-sub">カメラ付き自動給餌器・獣医師監修</p>
       <p class="product-desc">
-        カメラ越しに食べている姿を確認できて、声をかけることもできます。獣医師監修の日本メーカー製で保証もついています。
+        カメラ越しに食べている姿を見られて、録音した声で呼びかけることもできます。4.5Lの大容量タンクに乾燥剤ポケット付き。停電時は乾電池に自動で切り替わります。
       </p>
       <div class="product-price-row">
         <span class="product-price">¥20,000</span>
         <span class="product-price-note">前後（時期により変動）</span>
       </div>
-      <a href="https://shopping.yahoo.co.jp/search/%E3%82%AB%E3%83%AA%E3%82%AB%E3%83%AA%E3%83%9E%E3%82%B7%E3%83%BC%E3%83%B3%20V2C/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+      <a href="https://shopping.yahoo.co.jp/search/%E3%82%AB%E3%83%AA%E3%82%AB%E3%83%AA%E3%83%9E%E3%82%B7%E3%83%BC%E3%83%B3V2C%20Plus/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
     </div>
 
     <!-- 03 -->
     <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="fountain-room.png" alt="PETKIT Eversweet 3 Proで水を飲むグレーの猫" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
       <div class="product-icon-wrap">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M16 5 C16 5 9 13.5 9 18.5 A7 7 0 0 0 23 18.5 C23 13.5 16 5 16 5Z" stroke="#6E8266" stroke-width="1.8" stroke-linejoin="round"/>
@@ -676,20 +789,24 @@ footer {
         </svg>
       </div>
       <span class="product-tag sage">健康管理</span>
-      <h3 class="product-name">PETKIT Eversweet</h3>
-      <p class="product-sub">スマート循環式給水器</p>
+      <h3 class="product-name">PETKIT Eversweet 3 Pro</h3>
+      <p class="product-sub">コードレス循環式給水器・1.8L</p>
       <p class="product-desc">
-        水を循環させることで、猫が飲みやすい新鮮な状態を保てます。飲水量が気になる子や、複数の猫がいる家庭にも向いています。
+        ポンプがワイヤレスなので掃除がとても簡単です。三重フィルターと静音設計で、音に敏感な子にも向いています。受け皿はステンレス製。
       </p>
       <div class="product-price-row">
-        <span class="product-price">¥8,000</span>
-        <span class="product-price-note">前後（モデルにより異なる）</span>
+        <span class="product-price">¥8,000〜</span>
+        <span class="product-price-note">前後（ストアにより変動）</span>
       </div>
-      <a href="https://shopping.yahoo.co.jp/search/petkit%20eversweet/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+      <a href="https://shopping.yahoo.co.jp/search/PETKIT%20Eversweet%203%20Pro/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
     </div>
 
     <!-- 04 -->
     <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="toy-room.png" alt="ラグの上で電動猫じゃらしと遊ぶ猫" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
       <div class="product-icon-wrap">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="20" r="6" stroke="#6E8266" stroke-width="1.8"/>
@@ -714,12 +831,14 @@ footer {
   </div>
 
   <p class="price-disclaimer">
-    ※ 価格はYahoo!ショッピング内の目安です。ストアや時期によって変わるため、最新の金額はリンク先でご確認ください。
+    ※ 掲載写真はイメージです。実際の製品と色や形状が異なる場合があります。<br>
+    ※ 価格はYahoo!ショッピング内の目安です。ストアや時期によって変わるため、最新の金額と製品仕様はリンク先でご確認ください。
   </p>
 </section>
 
 <!-- ============ STORY ============ -->
 <section class="story" id="story">
+  <div class="foxtail foxtail-story"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
   <div class="story-inner">
     <div class="story-text-col reveal">
       <span class="section-eyebrow">
@@ -817,6 +936,7 @@ footer {
 
 <!-- ============ FOOTER ============ -->
 <footer>
+  <div class="foxtail foxtail-footer"><svg viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"> <path d="M62 196 Q58 148 56 100" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q42 159 33 122" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 196 Q80 163 88 130" fill="none" stroke="#7FA86B" stroke-width="2.2" stroke-linecap="round"/> <path d="M62 179 C44 173 33 159 29 142 C41 152 54 165 62 179Z" fill="#7FA86B" opacity="0.9"/> <path d="M62 163 C81 157 91 145 96 130 C83 141 70 151 62 163Z" fill="#8FBB78" opacity="0.85"/> <path d="M62 191 C48 189 37 181 31 170 C43 177 55 183 62 191Z" fill="#9BC983" opacity="0.75"/> <path d="M59.0 99.7 L59.7 96.2 L60.3 92.7 L60.9 89.3 L61.4 85.8 L61.8 82.4 L62.1 78.9 L62.3 75.5 L62.4 72.1 L62.4 68.7 L62.3 65.3 L62.3 61.9 L62.2 58.5 L62.1 55.1 L60.6 55.3 L58.3 58.9 L56.2 62.5 L54.3 66.1 L52.8 69.7 L51.5 73.3 L50.5 76.8 L49.9 80.2 L49.6 83.7 L49.6 87.1 L50.0 90.4 L50.7 93.7 L51.8 97.0 L53.0 100.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M56.0 100.0L51.3 96.8 M56.0 100.0L60.2 96.2 M55.7 97.1L49.7 92.9 M55.7 97.1L61.2 92.2 M55.6 94.1L48.6 88.7 M55.6 94.1L61.3 87.7 M55.5 91.2L47.1 86.1 M55.5 91.2L63.3 85.0 M55.5 88.3L46.5 82.2 M55.5 88.3L62.9 80.5 M55.6 85.3L47.1 77.5 M55.6 85.3L63.9 77.5 M55.8 82.3L46.8 74.7 M55.8 82.3L64.3 74.3 M56.0 79.4L46.8 72.1 M56.0 79.4L63.8 70.8 M56.4 76.4L47.4 69.3 M56.4 76.4L65.3 69.3 M56.8 73.4L48.2 66.9 M56.8 73.4L65.0 66.5 M57.4 70.4L49.7 64.3 M57.4 70.4L63.6 63.2 M58.0 67.3L51.4 62.0 M58.0 67.3L64.3 61.7 M58.7 64.3L53.0 60.4 M58.7 64.3L63.1 59.2 M59.5 61.3L55.5 57.9 M59.5 61.3L63.3 57.7 M60.4 58.2L57.7 56.1 M60.4 58.2L63.1 56.1 M61.3 55.2L60.2 54.3 M61.3 55.2L62.5 54.3" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M35.3 121.1 L35.1 118.2 L34.9 115.3 L34.6 112.4 L34.3 109.5 L34.0 106.7 L33.6 103.9 L33.1 101.1 L32.5 98.3 L31.9 95.6 L31.2 92.8 L30.6 90.1 L30.0 87.4 L29.4 84.6 L28.2 85.1 L26.9 88.6 L25.9 92.0 L25.0 95.4 L24.3 98.6 L23.9 101.8 L23.8 104.8 L23.9 107.7 L24.4 110.5 L25.1 113.2 L26.1 115.8 L27.4 118.3 L28.9 120.7 L30.7 122.9Z" fill="#8FBB78" opacity="0.95"/> <path d="M33.0 122.0L29.0 119.7 M33.0 122.0L35.9 118.4 M32.1 119.8L27.0 116.4 M32.1 119.8L35.7 115.0 M31.4 117.5L25.1 113.9 M31.4 117.5L35.8 111.9 M30.7 115.2L23.6 111.6 M30.7 115.2L35.6 108.7 M30.1 112.8L22.3 108.2 M30.1 112.8L36.0 106.1 M29.5 110.5L21.4 106.5 M29.5 110.5L34.7 102.8 M29.1 108.0L20.8 104.0 M29.1 108.0L35.6 100.8 M28.7 105.6L20.4 100.5 M28.7 105.6L33.3 97.5 M28.4 103.1L20.6 97.8 M28.4 103.1L35.0 96.3 M28.2 100.6L20.7 96.1 M28.2 100.6L33.8 93.8 M28.1 98.1L21.3 94.6 M28.1 98.1L31.9 91.4 M28.1 95.5L22.1 92.1 M28.1 95.5L31.4 89.7 M28.1 92.9L23.2 90.4 M28.1 92.9L31.2 88.2 M28.3 90.3L24.6 88.5 M28.3 90.3L30.8 86.8 M28.5 87.6L26.1 86.2 M28.5 87.6L30.4 85.5 M28.8 84.9L27.7 84.3 M28.8 84.9L29.6 83.9" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> <path d="M90.1 130.7 L91.7 128.7 L93.3 126.6 L94.8 124.5 L96.4 122.5 L97.8 120.4 L99.3 118.3 L100.6 116.1 L101.9 114.0 L103.2 111.8 L104.5 109.6 L105.8 107.5 L107.1 105.3 L108.4 103.2 L107.3 102.8 L104.3 104.4 L101.4 106.0 L98.7 107.7 L96.3 109.4 L94.0 111.3 L92.1 113.2 L90.4 115.2 L89.0 117.3 L87.8 119.5 L87.0 121.8 L86.4 124.2 L86.0 126.7 L85.9 129.3Z" fill="#8FBB78" opacity="0.95"/> <path d="M88.0 130.0L85.8 126.5 M88.0 130.0L91.6 128.2 M88.7 128.0L85.8 123.5 M88.7 128.0L93.3 124.8 M89.6 126.0L85.6 120.9 M89.6 126.0L95.2 122.6 M90.5 124.1L85.8 118.3 M90.5 124.1L96.7 119.8 M91.5 122.2L85.8 116.2 M91.5 122.2L98.4 117.9 M92.5 120.3L86.6 114.0 M92.5 120.3L99.9 115.8 M93.7 118.4L87.3 112.2 M93.7 118.4L101.0 113.3 M94.9 116.6L89.9 109.6 M94.9 116.6L102.4 112.0 M96.2 114.8L90.9 108.2 M96.2 114.8L103.6 110.8 M97.7 113.0L92.4 107.0 M97.7 113.0L104.3 108.3 M99.1 111.3L95.1 105.5 M99.1 111.3L105.4 107.7 M100.7 109.6L97.0 104.6 M100.7 109.6L106.2 106.5 M102.4 107.9L99.8 103.6 M102.4 107.9L106.8 105.1 M104.1 106.2L101.9 103.1 M104.1 106.2L107.5 104.1 M106.0 104.6L104.4 102.6 M106.0 104.6L108.2 103.4 M107.9 103.0L107.1 102.2 M107.9 103.0L108.8 102.4" stroke="#A8D18F" stroke-width="1.25" stroke-linecap="round" fill="none" opacity="0.9"/> </svg></div>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
