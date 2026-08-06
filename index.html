@@ -1,1 +1,882 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="都会で猫と暮らす共働き家庭のためのスマート猫グッズ紹介サイト。自動給餌器・全自動トイレ・見守りカメラで、留守番の不安をやわらげます。">
+<title>bonbon222 — 猫と暮らすスマートライフ</title>
+<link rel="icon" href="logo-paw.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+:root {
+  --cream:      #FBF9F5;
+  --cream-warm: #F4EFE6;
+  --sage:       #96A78D;
+  --sage-deep:  #6E8266;
+  --sage-pale:  #E3E9DF;
+  --sand:       #D9C3A0;
+  --sand-deep:  #BFA274;
+  --ink:        #3D3B36;
+  --ink-soft:   #6E6A62;
+  --ink-light:  #9A958C;
+  --line:       rgba(150,167,141,0.25);
+  --shadow-sm:  0 2px 12px rgba(61,59,54,0.05);
+  --shadow-md:  0 8px 28px rgba(61,59,54,0.08);
+  --radius:     20px;
+  --radius-sm:  12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ============ HEADER ============ */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(251,249,245,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all 0.35s ease;
+}
+header.scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: var(--shadow-sm);
+  padding: 12px 32px;
+}
+
+.logo-link {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.logo-mark { width: 34px; height: 34px; object-fit: contain; }
+.logo-text {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--ink); letter-spacing: 0.04em;
+}
+.logo-text span { color: var(--sage); }
+
+nav { display: flex; gap: 28px; align-items: center; }
+nav a {
+  color: var(--ink-soft); text-decoration: none;
+  font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.06em; transition: color 0.2s;
+  position: relative;
+}
+nav a:not(.nav-cta)::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--sage); border-radius: 2px;
+  transform: scaleX(0); transition: transform 0.25s ease;
+}
+nav a:not(.nav-cta):hover { color: var(--sage-deep); }
+nav a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--sage); color: #fff !important;
+  padding: 9px 22px; border-radius: 100px;
+  font-weight: 700 !important; font-size: 0.78rem !important;
+  transition: all 0.25s;
+}
+.nav-cta:hover { background: var(--sage-deep); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 6px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--ink); border-radius: 2px; transition: all 0.3s;
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding-top: 76px;
+  background: var(--cream);
+  position: relative;
+}
+
+.hero-image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--cream-warm);
+}
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Soft fade at the bottom so the image melts into the page */
+.hero-image-wrap::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 34%;
+  background: linear-gradient(180deg, rgba(251,249,245,0) 0%, var(--cream) 88%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: -80px auto 0;
+  padding: 0 24px 80px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid var(--line);
+  padding: 7px 18px; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 500;
+  color: var(--sage-deep); letter-spacing: 0.1em;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 26px;
+}
+.hero-badge img { width: 16px; height: 16px; }
+
+.hero-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(1.9rem, 5.4vw, 3.3rem);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+.hero-title .accent { color: var(--sage-deep); }
+
+.hero-sub {
+  font-size: clamp(0.86rem, 2vw, 1rem);
+  color: var(--ink-soft);
+  line-height: 2.1;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+
+.hero-cta-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--sage); color: #fff;
+  text-decoration: none;
+  padding: 15px 34px; border-radius: 100px;
+  font-size: 0.88rem; font-weight: 700; letter-spacing: 0.05em;
+  transition: all 0.28s ease;
+  box-shadow: 0 4px 16px rgba(150,167,141,0.3);
+}
+.btn-primary:hover {
+  background: var(--sage-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(150,167,141,0.4);
+}
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--ink-soft);
+  text-decoration: none;
+  padding: 15px 34px; border-radius: 100px;
+  font-size: 0.88rem; font-weight: 500; letter-spacing: 0.05em;
+  border: 1px solid var(--line);
+  transition: all 0.28s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--sage);
+  color: var(--sage-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============ PAW DIVIDER ============ */
+.paw-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding: 0 24px;
+}
+.paw-divider::before, .paw-divider::after {
+  content: ''; height: 1px; background: var(--line); flex: 1; max-width: 160px;
+}
+.paw-divider img { width: 26px; height: 26px; opacity: 0.55; }
+
+/* ============ SECTION ============ */
+.section { padding: 88px 32px; max-width: 1080px; margin: 0 auto; }
+
+.section-head { text-align: center; margin-bottom: 52px; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--sage-deep); margin-bottom: 12px;
+}
+.section-eyebrow img { width: 15px; height: 15px; }
+
+.section-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+  font-weight: 700; line-height: 1.5;
+  color: var(--ink);
+}
+.section-title .accent { color: var(--sage-deep); }
+
+.section-lead {
+  font-size: 0.88rem; color: var(--ink-soft);
+  max-width: 540px; margin: 14px auto 0; line-height: 2;
+}
+
+/* ============ EMPATHY ============ */
+.empathy {
+  background: var(--cream-warm);
+  padding: 78px 32px;
+}
+.empathy-inner {
+  max-width: 720px; margin: 0 auto; text-align: center;
+}
+.empathy-quote {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(1.15rem, 3vw, 1.65rem);
+  font-weight: 500; line-height: 2;
+  color: var(--ink); margin-bottom: 22px;
+}
+.empathy-quote .hl {
+  background: linear-gradient(transparent 62%, var(--sand) 62%);
+  padding: 0 2px;
+}
+.empathy-text {
+  font-size: 0.88rem; color: var(--ink-soft); line-height: 2.1;
+}
+
+/* ============ PRODUCTS ============ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 26px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 26px 26px;
+  display: flex; flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sage);
+}
+
+.product-icon-wrap {
+  width: 56px; height: 56px;
+  background: var(--sage-pale);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.product-icon-wrap svg { width: 30px; height: 30px; }
+
+.product-tag {
+  display: inline-block; align-self: flex-start;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--sand-deep);
+  background: rgba(217,195,160,0.22);
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 12px;
+}
+.product-tag.sage { color: var(--sage-deep); background: var(--sage-pale); }
+
+.product-name {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.06rem; font-weight: 700;
+  line-height: 1.5; margin-bottom: 5px; color: var(--ink);
+}
+.product-sub {
+  font-size: 0.74rem; color: var(--ink-light);
+  margin-bottom: 14px; letter-spacing: 0.04em;
+}
+.product-desc {
+  font-size: 0.82rem; color: var(--ink-soft);
+  line-height: 1.95; margin-bottom: 20px; flex: 1;
+}
+
+.product-price-row {
+  display: flex; align-items: baseline; gap: 6px;
+  margin-bottom: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+.product-price {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--ink);
+}
+.product-price-note { font-size: 0.7rem; color: var(--ink-light); }
+
+.product-btn {
+  display: block; text-align: center;
+  background: var(--sage); color: #fff;
+  text-decoration: none;
+  padding: 12px 18px; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
+  transition: all 0.25s;
+}
+.product-btn:hover { background: var(--sage-deep); }
+
+.price-disclaimer {
+  text-align: center; font-size: 0.72rem;
+  color: var(--ink-light); margin-top: 26px; line-height: 1.8;
+}
+
+/* ============ STORY ============ */
+.story {
+  background: var(--cream-warm);
+  padding: 88px 32px;
+}
+.story-inner {
+  max-width: 940px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.story-visual {
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  padding: 44px 32px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.story-visual img { width: 96px; margin: 0 auto 20px; opacity: 0.9; }
+.story-visual-caption {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 0.92rem; font-weight: 500;
+  color: var(--sage-deep); line-height: 1.9;
+}
+.story-visual-sub {
+  font-size: 0.74rem; color: var(--ink-light);
+  margin-top: 10px; letter-spacing: 0.08em;
+}
+
+.story-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(1.35rem, 3.2vw, 1.9rem);
+  font-weight: 700; line-height: 1.65;
+  margin-bottom: 22px; color: var(--ink);
+}
+.story-title .accent { color: var(--sage-deep); }
+.story-text {
+  font-size: 0.86rem; color: var(--ink-soft);
+  line-height: 2.2; margin-bottom: 16px;
+}
+
+/* ============ ARTICLES ============ */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+.article-card {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  text-decoration: none; display: flex; flex-direction: column;
+  transition: all 0.3s ease;
+}
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--sage);
+}
+.article-meta {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.article-cat {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--sage-deep); background: var(--sage-pale);
+  padding: 4px 12px; border-radius: 100px;
+}
+.article-status {
+  font-size: 0.68rem; color: var(--ink-light);
+  border: 1px dashed var(--line); padding: 3px 10px; border-radius: 100px;
+}
+.article-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1rem; font-weight: 700; line-height: 1.65;
+  color: var(--ink); margin-bottom: 12px;
+}
+.article-excerpt {
+  font-size: 0.8rem; color: var(--ink-soft);
+  line-height: 1.95; flex: 1; margin-bottom: 16px;
+}
+.article-read {
+  font-size: 0.76rem; font-weight: 700; color: var(--sage-deep);
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ============ CTA ============ */
+.cta {
+  background: var(--sage);
+  padding: 76px 32px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-paw {
+  position: absolute; width: 200px; opacity: 0.09;
+  filter: brightness(0) invert(1);
+}
+.cta-paw.p1 { top: -40px; left: -30px; transform: rotate(-18deg); }
+.cta-paw.p2 { bottom: -50px; right: -20px; transform: rotate(24deg); }
+
+.cta-inner { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; }
+.cta-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: clamp(1.4rem, 3.6vw, 2.1rem);
+  font-weight: 700; color: #fff;
+  line-height: 1.6; margin-bottom: 12px;
+}
+.cta-sub {
+  font-size: 0.86rem; color: rgba(255,255,255,0.9);
+  margin-bottom: 30px; line-height: 1.9;
+}
+.btn-white {
+  display: inline-block;
+  background: #fff; color: var(--sage-deep);
+  text-decoration: none;
+  padding: 16px 42px; border-radius: 100px;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.05em;
+  transition: all 0.28s;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  padding: 54px 32px 32px;
+}
+.footer-inner { max-width: 1080px; margin: 0 auto; }
+.footer-top {
+  display: flex; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap; margin-bottom: 40px;
+}
+.footer-brand { max-width: 280px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; text-decoration: none; }
+.footer-logo img { width: 32px; }
+.footer-logo-text {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1.15rem; font-weight: 700; color: var(--ink);
+}
+.footer-logo-text span { color: var(--sage); }
+.footer-tagline { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.9; }
+
+.footer-links { display: flex; gap: 52px; flex-wrap: wrap; }
+.footer-col h4 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  color: var(--sage-deep); margin-bottom: 14px;
+}
+.footer-col a {
+  display: block; font-size: 0.8rem; color: var(--ink-soft);
+  text-decoration: none; margin-bottom: 9px; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--sage-deep); }
+
+.footer-bottom {
+  padding-top: 26px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; align-items: center;
+}
+.footer-copy { font-size: 0.74rem; color: var(--ink-light); }
+.footer-note {
+  font-size: 0.7rem; color: var(--ink-light);
+  max-width: 460px; text-align: right; line-height: 1.75;
+}
+
+/* ============ ANIM ============ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 860px) {
+  .story-inner { grid-template-columns: 1fr; gap: 36px; }
+  .story-visual { order: -1; }
+}
+
+@media (max-width: 720px) {
+  header { padding: 12px 18px; }
+  header.scrolled { padding: 10px 18px; }
+  nav { display: none; }
+  .hamburger { display: flex; }
+
+  .hero-content { margin-top: -46px; padding: 0 18px 60px; }
+  .section { padding: 62px 18px; }
+  .empathy, .story, .cta { padding: 58px 18px; }
+  footer { padding: 44px 18px 26px; }
+
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links { gap: 36px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-note { text-align: left; }
+
+  .btn-primary, .btn-ghost { padding: 13px 26px; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <a href="/" class="logo-link">
+    <img src="logo-paw.png" alt="" class="logo-mark">
+    <span class="logo-text">bonbon<span>222</span></span>
+  </a>
+  <nav>
+    <a href="#products">猫グッズ</a>
+    <a href="#story">bonbonのこと</a>
+    <a href="#articles">読みもの</a>
+    <a href="#products" class="nav-cta">おすすめを見る</a>
+  </nav>
+  <button class="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-image-wrap">
+    <img src="hero-cats.png" alt="テーブルの向こうから飼い主の帰りを待つ3匹の猫" class="hero-image">
+  </div>
+  <div class="hero-content">
+    <span class="hero-badge">
+      <img src="logo-paw.png" alt="">
+      猫と暮らすスマートライフ
+    </span>
+    <h1 class="hero-title">
+      仕事で帰れなくても、<br>
+      <span class="accent">幸せにいられるにゃん。</span>
+    </h1>
+    <p class="hero-sub">
+      自動給餌器、全自動トイレ、見守りカメラ。<br>
+      留守番の時間をやさしくしてくれる道具を、ひとつずつ紹介します。
+    </p>
+    <div class="hero-cta-group">
+      <a href="#products" class="btn-primary">おすすめグッズを見る</a>
+      <a href="#story" class="btn-ghost">bonbon222のこと</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPATHY ============ -->
+<section class="empathy">
+  <div class="empathy-inner reveal">
+    <p class="empathy-quote">
+      残業で遅くなる夜、<br>
+      <span class="hl">ちゃんとごはん食べてるかな</span>って、<br>
+      ずっと考えてる。
+    </p>
+    <p class="empathy-text">
+      猫を大切に思うほど、一緒にいられない時間が気になります。<br>
+      bonbon222は、その時間をやさしくしてくれる道具を集めました。
+    </p>
+  </div>
+</section>
+
+<div class="paw-divider" style="padding-top:56px;">
+  <img src="logo-paw.png" alt="">
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="section" id="products">
+  <div class="section-head reveal">
+    <span class="section-eyebrow">
+      <img src="logo-paw.png" alt="">
+      おすすめの猫グッズ
+    </span>
+    <h2 class="section-title">留守番の時間を、<span class="accent">やさしくする</span>4つの道具</h2>
+    <p class="section-lead">
+      Yahoo!ショッピングで実際に人気の高い商品から、共働き家庭に合うものを選びました。
+    </p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- 01 -->
+    <div class="product-card reveal">
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="17" r="10" stroke="#6E8266" stroke-width="1.8"/>
+          <path d="M9 10.5 A10 10 0 0 1 23 10.5" stroke="#6E8266" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="16" cy="17" r="4.5" stroke="#6E8266" stroke-width="1.6"/>
+          <circle cx="16" cy="6" r="1.6" fill="#BFA274"/>
+        </svg>
+      </div>
+      <span class="product-tag">いちばん人気</span>
+      <h3 class="product-name">PETKIT Pura Max2</h3>
+      <p class="product-sub">全自動猫トイレ・多頭飼い対応</p>
+      <p class="product-desc">
+        排泄のたびに自動で清掃してくれるので、帰宅したときのあのニオイがありません。スマホアプリで回数や体重もチェックできます。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥55,000</span>
+        <span class="product-price-note">前後（時期により変動）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/petkit%20pura%20max2/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+    <!-- 02 -->
+    <div class="product-card reveal">
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="11" width="20" height="14" rx="3" stroke="#6E8266" stroke-width="1.8"/>
+          <circle cx="16" cy="18" r="4.5" stroke="#6E8266" stroke-width="1.6"/>
+          <circle cx="16" cy="18" r="1.6" fill="#BFA274"/>
+          <path d="M11 11 L13 7.5 L19 7.5 L21 11" stroke="#6E8266" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="product-tag sage">カメラ付き</span>
+      <h3 class="product-name">カリカリマシーン V2C</h3>
+      <p class="product-sub">カメラ付き自動給餌器・日本メーカー</p>
+      <p class="product-desc">
+        カメラ越しに食べている姿を確認できて、声をかけることもできます。獣医師監修の日本メーカー製で保証もついています。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥20,000</span>
+        <span class="product-price-note">前後（時期により変動）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/%E3%82%AB%E3%83%AA%E3%82%AB%E3%83%AA%E3%83%9E%E3%82%B7%E3%83%BC%E3%83%B3%20V2C/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+    <!-- 03 -->
+    <div class="product-card reveal">
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 5 C16 5 9 13.5 9 18.5 A7 7 0 0 0 23 18.5 C23 13.5 16 5 16 5Z" stroke="#6E8266" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M13 19.5 A3.4 3.4 0 0 0 16.4 22.9" stroke="#BFA274" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="product-tag sage">健康管理</span>
+      <h3 class="product-name">PETKIT Eversweet</h3>
+      <p class="product-sub">スマート循環式給水器</p>
+      <p class="product-desc">
+        水を循環させることで、猫が飲みやすい新鮮な状態を保てます。飲水量が気になる子や、複数の猫がいる家庭にも向いています。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥8,000</span>
+        <span class="product-price-note">前後（モデルにより異なる）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/petkit%20eversweet/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+    <!-- 04 -->
+    <div class="product-card reveal">
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="20" r="6" stroke="#6E8266" stroke-width="1.8"/>
+          <path d="M16 14 C16 14 17.5 9 21 7" stroke="#6E8266" stroke-width="1.8" stroke-linecap="round"/>
+          <ellipse cx="22.5" cy="6" rx="3" ry="2" transform="rotate(-25 22.5 6)" fill="#BFA274" opacity="0.7"/>
+          <circle cx="16" cy="20" r="2" fill="#BFA274"/>
+        </svg>
+      </div>
+      <span class="product-tag">運動不足対策</span>
+      <h3 class="product-name">自動猫じゃらし</h3>
+      <p class="product-sub">電動タイプ・タイマー機能つき</p>
+      <p class="product-desc">
+        羽根や紐が不規則に動いて、ひとりの時間も遊びに変えてくれます。タイマー付きを選ぶと遊びすぎの心配もありません。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥2,000〜</span>
+        <span class="product-price-note">タイプにより幅あり</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/%E7%8C%AB%20%E8%87%AA%E5%8B%95%20%E7%8C%AB%E3%81%98%E3%82%83%E3%82%89%E3%81%97%20%E9%9B%BB%E5%8B%95/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+  </div>
+
+  <p class="price-disclaimer">
+    ※ 価格はYahoo!ショッピング内の目安です。ストアや時期によって変わるため、最新の金額はリンク先でご確認ください。
+  </p>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-text-col reveal">
+      <span class="section-eyebrow">
+        <img src="logo-paw.png" alt="">
+        bonbonのこと
+      </span>
+      <h2 class="story-title">
+        あの子が教えてくれた、<br>
+        <span class="accent">そばにいない時間の愛し方。</span>
+      </h2>
+      <p class="story-text">
+        bonbon222という名前は、いっしょに暮らしていた猫「bonbon」からもらいました。222は、にゃんにゃんにゃん。
+      </p>
+      <p class="story-text">
+        仕事で遅くなる夜、ちゃんとごはんを食べているか、さみしくしていないか。毎日そんなことを考えていました。あのころ今のような道具があったら、もう少し安心できたのかもしれません。
+      </p>
+      <p class="story-text">
+        ここで紹介しているのは、同じ気持ちを抱えている人に向けたものです。留守番の時間が、少しでもやさしくなりますように。
+      </p>
+    </div>
+    <div class="story-visual reveal">
+      <img src="logo-paw.png" alt="bonbon222のロゴ">
+      <p class="story-visual-caption">
+        猫といっしょに、<br>もっと気楽に暮らせるように。
+      </p>
+      <p class="story-visual-sub">bonbon222</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARTICLES ============ -->
+<section class="section" id="articles">
+  <div class="section-head reveal">
+    <span class="section-eyebrow">
+      <img src="logo-paw.png" alt="">
+      読みもの
+    </span>
+    <h2 class="section-title">これから<span class="accent">書いていく</span>記事</h2>
+    <p class="section-lead">
+      実際に使ってみた感想をもとに、順番に公開していきます。
+    </p>
+  </div>
+
+  <div class="articles-grid">
+    <div class="article-card reveal">
+      <div class="article-meta">
+        <span class="article-cat">全自動トイレ</span>
+        <span class="article-status">準備中</span>
+      </div>
+      <h3 class="article-title">全自動猫トイレを使ってみて、毎日の掃除はどう変わったか</h3>
+      <p class="article-excerpt">
+        導入前に不安だったこと、実際に使って分かったこと。多頭飼いでも大丈夫だったのか、正直に書きます。
+      </p>
+      <span class="article-read">近日公開</span>
+    </div>
+
+    <div class="article-card reveal">
+      <div class="article-meta">
+        <span class="article-cat">自動給餌器</span>
+        <span class="article-status">準備中</span>
+      </div>
+      <h3 class="article-title">カメラ付き自動給餌器の選び方。共働き家庭が見るべき5つのポイント</h3>
+      <p class="article-excerpt">
+        容量、給餌回数、停電時の動作、アプリの使いやすさ。買ってから後悔しないためのチェックリストです。
+      </p>
+      <span class="article-read">近日公開</span>
+    </div>
+
+    <div class="article-card reveal">
+      <div class="article-meta">
+        <span class="article-cat">見守りカメラ</span>
+        <span class="article-status">準備中</span>
+      </div>
+      <h3 class="article-title">昼休みに猫と話す日々。ペットカメラで変わったこと</h3>
+      <p class="article-excerpt">
+        監視のための道具だと思っていたけれど、実際に使うと少し違いました。距離があっても近くにいられる感覚について。
+      </p>
+      <span class="article-read">近日公開</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <img src="logo-paw.png" alt="" class="cta-paw p1">
+  <img src="logo-paw.png" alt="" class="cta-paw p2">
+  <div class="cta-inner reveal">
+    <h2 class="cta-title">今日から、少しだけ気楽に。</h2>
+    <p class="cta-sub">
+      紹介した猫グッズはすべてYahoo!ショッピングで購入できます。
+    </p>
+    <a href="https://shopping.yahoo.co.jp/search/%E7%8C%AB%20%E8%87%AA%E5%8B%95%20%E3%82%B0%E3%83%83%E3%82%BA/0/" target="_blank" rel="noopener" class="btn-white">Yahoo!ショッピングで探す</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <img src="logo-paw.png" alt="">
+          <span class="footer-logo-text">bonbon<span>222</span></span>
+        </a>
+        <p class="footer-tagline">
+          都会で猫と暮らす人のための、スマート猫グッズ紹介サイト。
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>猫グッズ</h4>
+          <a href="#products">全自動トイレ</a>
+          <a href="#products">自動給餌器</a>
+          <a href="#products">給水器</a>
+          <a href="#products">おもちゃ</a>
+        </div>
+        <div class="footer-col">
+          <h4>サイトについて</h4>
+          <a href="#story">bonbonのこと</a>
+          <a href="#articles">読みもの</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 bonbon222</p>
+      <p class="footer-note">
+        当サイトはアフィリエイトプログラム（バリューコマース）を利用しています。リンク経由で購入された場合、当サイトに報酬が発生することがあります。
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.querySelectorAll('.product-card').forEach((c, i) => {
+  c.style.transitionDelay = (i * 0.08) + 's';
+});
+document.querySelectorAll('.article-card').forEach((c, i) => {
+  c.style.transitionDelay = (i * 0.08) + 's';
+});
+</script>
+</body>
+</html>
