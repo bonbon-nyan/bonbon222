@@ -579,6 +579,64 @@ footer { position: relative; overflow: hidden; }
 }
 
 
+
+/* paw mark replacing the final punctuation in the hero title */
+.title-paw {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-left: 0.14em;
+  vertical-align: -0.04em;
+  opacity: 0.85;
+}
+@media (max-width: 720px) {
+  .title-paw { width: 0.56em; height: 0.56em; }
+}
+
+
+/* portrait source photo: keep the upper part (the cat) in frame */
+.product-photo.tall { object-position: center 22%; }
+
+
+/* ============ PR NOTICE ============ */
+.pr-bar {
+  background: var(--sage-pale);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  padding: 7px 18px;
+  font-size: 0.68rem;
+  color: var(--sage-deep);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.pr-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
+}
+/* fixed header sits directly under the PR bar */
+header { top: 32px; }
+/* hero already has padding-top for the header; add the bar height */
+.hero { padding-top: 108px; }
+@media (max-width: 720px) {
+  .pr-bar { font-size: 0.63rem; padding: 6px 14px; }
+  header { top: 40px; }
+  .hero { padding-top: 104px; }
+}
+
+/* inline PR label used in the products section */
+.pr-inline {
+  display: inline-block;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--sand-deep);
+  background: rgba(217,195,160,0.25);
+  border-radius: 100px;
+  padding: 3px 11px;
+  margin-bottom: 10px;
+}
+
 /* ============ IMAGE NOTE ============ */
 .product-photo-wrap {
   position: relative;
@@ -641,6 +699,8 @@ footer { position: relative; overflow: hidden; }
 </style>
 </head>
 <body>
+<div class="pr-bar">本ページはプロモーションを含みます（アフィリエイト広告を利用しています）</div>
+
 
 <!-- ============ HEADER ============ -->
 <header id="header">
@@ -672,8 +732,9 @@ footer { position: relative; overflow: hidden; }
       猫と暮らすスマートライフ
     </span>
     <h1 class="hero-title">
-      仕事で帰れなくても、<br>
-      <span class="accent">幸せにいられるにゃん。</span>
+      仕事で帰れなくても<br>
+      <span class="accent">幸せにいられる</span><br>
+      <span class="accent">にゃん</span><img src="logo-paw.png" alt="" class="title-paw">
     </h1>
     <p class="hero-sub">
       自動給餌器、全自動トイレ、見守りカメラ。<br>
@@ -714,7 +775,8 @@ footer { position: relative; overflow: hidden; }
       <img src="logo-paw.png" alt="">
       おすすめの猫グッズ
     </span>
-    <h2 class="section-title">留守番の時間を、<span class="accent">やさしくする</span>4つの道具</h2>
+    <br><span class="pr-inline">PR</span>
+    <h2 class="section-title">留守番の時間を<br><span class="accent">やさしくする</span>7つの道具</h2>
     <p class="section-lead">
       Yahoo!ショッピングで実際に人気の高い商品から、共働き家庭に合うものを選びました。
     </p>
@@ -828,6 +890,87 @@ footer { position: relative; overflow: hidden; }
       <a href="https://shopping.yahoo.co.jp/search/%E7%8C%AB%20%E8%87%AA%E5%8B%95%20%E7%8C%AB%E3%81%98%E3%82%83%E3%82%89%E3%81%97%20%E9%9B%BB%E5%8B%95/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
     </div>
 
+    <!-- 05 camera -->
+    <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="camera-room.png" alt="北欧スタイルのリビングでノルウェージャンフォレストキャットを見守るTapo C210" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="13" r="7.5" stroke="#6E8266" stroke-width="1.8"/>
+          <circle cx="16" cy="13" r="3" fill="#BFA274"/>
+          <path d="M10 21 L10 25 A2 2 0 0 0 12 27 L20 27 A2 2 0 0 0 22 25 L22 21" stroke="#6E8266" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="product-tag sage">留守番の見守り</span>
+      <h3 class="product-name">TP-Link Tapo C210</h3>
+      <p class="product-sub">首振りペットカメラ・300万画素</p>
+      <p class="product-desc">
+        水平360度・垂直114度の首振りで部屋を見渡せます。マイクとスピーカー内蔵なので、昼休みにスマホから声をかけられます。暗い部屋でも見える夜間撮影つき。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥4,000〜</span>
+        <span class="product-price-note">前後（セット内容で変動）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/Tapo%20C210/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+    <!-- 06 cat tower -->
+    <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="tower-room.png" alt="北欧スタイルの部屋に設置された突っ張りキャットタワーとキジトラ猫" class="product-photo tall" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="16" y1="4" x2="16" y2="28" stroke="#6E8266" stroke-width="2"/>
+          <rect x="7" y="9" width="12" height="2.4" rx="1.2" fill="#6E8266"/>
+          <rect x="13" y="16" width="12" height="2.4" rx="1.2" fill="#6E8266"/>
+          <rect x="8" y="23" width="12" height="2.4" rx="1.2" fill="#BFA274"/>
+        </svg>
+      </div>
+      <span class="product-tag">賃貸でもOK</span>
+      <h3 class="product-name">RAKU 突っ張りキャットタワー</h3>
+      <p class="product-sub">木製スリム・高さ182〜281cm対応</p>
+      <p class="product-desc">
+        床と天井で突っ張るので壁に穴を開けません。支柱が太く倒れにくいため、多頭飼いや大きめの子でも安心です。木の色を活かしたデザインで部屋になじみます。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥12,998</span>
+        <span class="product-price-note">前後（モデルにより異なる）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/RAKU%20%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%BF%E3%83%AF%E3%83%BC%20%E7%AA%81%E3%81%A3%E5%BC%B5%E3%82%8A%20%E6%9C%A8%E8%A3%BD/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
+    <!-- 07 escape gate -->
+    <div class="product-card reveal">
+      <div class="product-photo-wrap">
+        <img src="gate-room.png" alt="掃き出し窓に設置された猫の脱走防止ゲートと2匹の猫" class="product-photo" loading="lazy">
+        <span class="img-note">イメージ画像</span>
+      </div>
+      <div class="product-icon-wrap">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="5" width="20" height="22" rx="2" stroke="#6E8266" stroke-width="1.8"/>
+          <line x1="11" y1="5" x2="11" y2="27" stroke="#6E8266" stroke-width="1.4"/>
+          <line x1="16" y1="5" x2="16" y2="27" stroke="#6E8266" stroke-width="1.4"/>
+          <line x1="21" y1="5" x2="21" y2="27" stroke="#6E8266" stroke-width="1.4"/>
+          <circle cx="24" cy="16" r="1.8" fill="#BFA274"/>
+        </svg>
+      </div>
+      <span class="product-tag">安全対策</span>
+      <h3 class="product-name">のぼれんニャン バリアフリー3</h3>
+      <p class="product-sub">突っ張り式・扉つき脱走防止ゲート</p>
+      <p class="product-desc">
+        宅配便の受け取りや家族の出入りのたびにヒヤッとする、あの不安をなくせます。扉つきなので人は普通に通れて、下部に段差がないつくりです。
+      </p>
+      <div class="product-price-row">
+        <span class="product-price">¥15,000〜</span>
+        <span class="product-price-note">前後（タイプにより幅あり）</span>
+      </div>
+      <a href="https://shopping.yahoo.co.jp/search/%E3%81%AE%E3%81%BC%E3%82%8C%E3%82%93%E3%83%8B%E3%83%A3%E3%83%B3%20%E3%83%90%E3%83%AA%E3%82%A2%E3%83%95%E3%83%AA%E3%83%BC3/0/" target="_blank" rel="noopener" class="product-btn">Yahoo!ショッピングで見る</a>
+    </div>
+
   </div>
 
   <p class="price-disclaimer">
@@ -846,8 +989,9 @@ footer { position: relative; overflow: hidden; }
         bonbonのこと
       </span>
       <h2 class="story-title">
-        あの子が教えてくれた、<br>
-        <span class="accent">そばにいない時間の愛し方。</span>
+        あの子が教えてくれた<br>
+        <span class="accent">そばにいない時間の</span><br>
+        <span class="accent">愛し方</span><img src="logo-paw.png" alt="" class="title-paw">
       </h2>
       <p class="story-text">
         bonbon222という名前は、いっしょに暮らしていた猫「bonbon」からもらいました。222は、にゃんにゃんにゃん。
@@ -998,5 +1142,11 @@ document.querySelectorAll('.article-card').forEach((c, i) => {
   c.style.transitionDelay = (i * 0.08) + 's';
 });
 </script>
+
+<!-- ValueCommerce LinkSwitch -->
+<script type="text/javascript">
+  var vc_pid = "892674557";
+</script>
+<script type="text/javascript" src="//aml.valuecommerce.com/vcdal.js" async></script>
 </body>
 </html>
