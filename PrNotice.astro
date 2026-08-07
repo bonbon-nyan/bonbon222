@@ -1,0 +1,115 @@
+---
+/**
+ * PrNotice.astro — bonbon222 ステマ規制対応 PR表記
+ *
+ * 使い方:
+ *   import PrNotice from '../components/PrNotice.astro';
+ *   <PrNotice />                  … 記事冒頭（ファーストビュー内）
+ *   <PrNotice variant="footer" /> … フッター用の詳しい説明
+ *
+ * 置き場所: src/components/PrNotice.astro
+ */
+const { variant = "top" } = Astro.props;
+---
+
+{variant === "top" && (
+  <aside class="pr-notice" aria-label="広告表記">
+    <svg class="pr-notice__paw" viewBox="0 0 24 24" aria-hidden="true">
+      <ellipse cx="7"  cy="8"    rx="2.1" ry="2.8" />
+      <ellipse cx="12" cy="6.4"  rx="2.1" ry="3" />
+      <ellipse cx="17" cy="8"    rx="2.1" ry="2.8" />
+      <path d="M12 11.2c3.1 0 5.4 2.3 5.4 4.9 0 2.1-1.7 3.3-3.6 3.3-.8 0-1.3-.3-1.8-.3s-1 .3-1.8.3c-1.9 0-3.6-1.2-3.6-3.3 0-2.6 2.3-4.9 5.4-4.9z" />
+    </svg>
+    <p>
+      この記事はアフィリエイト広告（PR）を含みます。商品リンク経由でご購入があった場合、
+      当サイトに収益が発生することがあります。
+    </p>
+  </aside>
+)}
+
+{variant === "footer" && (
+  <section class="pr-policy" aria-labelledby="pr-policy-heading">
+    <h2 id="pr-policy-heading">広告掲載について</h2>
+    <p>
+      bonbon222では、記事内でご紹介している商品・サービスの一部にアフィリエイト広告
+      （バリューコマース、Amazonアソシエイト等）を利用しています。リンク経由でご購入・お申し込みがあった場合、
+      当サイトに広告収益が発生することがあります。
+    </p>
+    <p>
+      収益の有無が商品の評価や掲載順に影響することはありません。価格・仕様は執筆時点のもので、
+      最新の情報は各販売ページをご確認ください。
+    </p>
+    {/*
+      ▼ Amazonアソシエイト提携が承認されたら、下のコメントを外してください。
+        この一文はAmazon側の規約で「掲載必須」と定められた文言です（改変不可）。
+      <p class="pr-policy__amazon">
+        Amazonのアソシエイトとして、bonbon222は適格販売により収入を得ています。
+      </p>
+    */}
+  </section>
+)}
+
+<style>
+  /* --- 記事冒頭用 ---------------------------------------------- */
+  .pr-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7em;
+    margin: 0 0 2rem;
+    padding: 0.85em 1.1em;
+    background: var(--color-sand, #ece5d8);
+    border-left: 3px solid var(--color-sage, #8a9a7b);
+    border-radius: 0 8px 8px 0;
+    font-family: "Zen Maru Gothic", system-ui, sans-serif;
+  }
+
+  .pr-notice__paw {
+    flex: 0 0 auto;
+    width: 1.15em;
+    height: 1.15em;
+    margin-top: 0.15em;
+    fill: var(--color-sage, #8a9a7b);
+    opacity: 0.85;
+  }
+
+  .pr-notice p {
+    margin: 0;
+    /* 「一般消費者が認識できる」大きさを確保。これ以上小さくしないこと */
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: var(--color-text, #4a453e);
+  }
+
+  /* --- フッター用 ---------------------------------------------- */
+  .pr-policy {
+    margin: 3rem 0 0;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid var(--color-sand, #ece5d8);
+    font-family: "Zen Maru Gothic", system-ui, sans-serif;
+  }
+
+  .pr-policy h2 {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-sage-dark, #6d7d5e);
+  }
+
+  .pr-policy p {
+    margin: 0 0 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.9;
+    color: var(--color-text-muted, #6b655c);
+  }
+
+  .pr-policy p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 480px) {
+    .pr-notice {
+      padding: 0.8em 0.9em;
+    }
+  }
+</style>
